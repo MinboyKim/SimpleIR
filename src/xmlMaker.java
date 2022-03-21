@@ -13,7 +13,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class xmlMaker {
-    public static void main(String[] args) throws ParserConfigurationException, IOException, TransformerException {
+    public void xmlMake() throws ParserConfigurationException, IOException, TransformerException {
         File myDir = new File("C:\\Users\\minboy\\Desktop\\SimpleIR\\2주차 실습 html");
         File[] files = myDir.listFiles();
 
@@ -48,7 +48,7 @@ public class xmlMaker {
         transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
 
         DOMSource source = new DOMSource(document);
-        StreamResult result = new StreamResult(new FileOutputStream(new File("C:\\Users\\minboy\\Desktop\\SimpleIR\\2주차 실습 html\\collection.xml")));
+        StreamResult result = new StreamResult(new FileOutputStream(new File("C:\\Users\\minboy\\Desktop\\SimpleIR\\collection.xml")));
 
         transformer.transform(source, result);
     }
