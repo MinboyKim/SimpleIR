@@ -12,9 +12,15 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-public class xmlMaker {
-    public void xmlMake() throws ParserConfigurationException, IOException, TransformerException {
-        File myDir = new File("C:\\Users\\minboy\\Desktop\\SimpleIR\\2주차 실습 html");
+public class makeCollection {
+    private String data_path;
+    private String output_file = "./collection.xml";
+
+    public makeCollection(String path){
+        this.data_path = path;
+    }
+    public void makeXml() throws ParserConfigurationException, IOException, TransformerException {
+        File myDir = new File(this.data_path);
         File[] files = myDir.listFiles();
 
         DocumentBuilderFactory docFactory = DocumentBuilderFactory.newDefaultInstance();
@@ -48,7 +54,7 @@ public class xmlMaker {
         transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
 
         DOMSource source = new DOMSource(document);
-        StreamResult result = new StreamResult(new FileOutputStream(new File("C:\\Users\\minboy\\Desktop\\SimpleIR\\collection.xml")));
+        StreamResult result = new StreamResult(new FileOutputStream(new File(output_file)));
 
         transformer.transform(source, result);
     }

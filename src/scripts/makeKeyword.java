@@ -16,11 +16,17 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-public class kkma {
-    public void kkmaMake() throws ParserConfigurationException, IOException, SAXException, TransformerException {
+public class makeKeyword {
+    private String input_file;
+    private String output_file = "./index.xml";
+
+    public makeKeyword(String file) {
+        this.input_file = file;
+    }
+    public void convertXml() throws ParserConfigurationException, IOException, SAXException, TransformerException {
         DocumentBuilderFactory docFactory = DocumentBuilderFactory.newDefaultInstance();
         DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
-        Document document = docBuilder.parse("C:\\Users\\minboy\\Desktop\\SimpleIR\\collection.xml");
+        Document document = docBuilder.parse(this.input_file);
 
         for (int i = 0;i<document.getElementsByTagName("doc").getLength();i++){
             String testString = document.getElementsByTagName("doc").item(i).getChildNodes().item(1).getTextContent();
@@ -41,7 +47,7 @@ public class kkma {
         transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
 
         DOMSource source = new DOMSource(document);
-        StreamResult result = new StreamResult(new FileOutputStream(new File("C:\\Users\\minboy\\Desktop\\SimpleIR\\index.xml")));
+        StreamResult result = new StreamResult(new FileOutputStream(new File(this.output_file)));
 
         transformer.transform(source, result);
 
