@@ -20,7 +20,4 @@
 *.rar
 
 .idea/
-data/
-*.xml
 *.iml
-*.post
