@@ -20,5 +20,10 @@ public class kuir {
             indexer index = new indexer(path);
             index.indexMake();
         }
+        else if(command.equals("-s")){
+            String query = args[2];
+            searcher search = new searcher(path);
+            search.CalcSim(query);
+        }
     }
 }
