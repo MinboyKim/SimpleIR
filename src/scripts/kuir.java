@@ -23,7 +23,7 @@ public class kuir {
         else if(command.equals("-s")){
             String query = args[3];
             searcher search = new searcher(path);
-            search.CosineSimilarity(query);
+            search.CalcSim(query);
         }
     }
 }
