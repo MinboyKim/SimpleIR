@@ -25,5 +25,10 @@ public class kuir {
             searcher search = new searcher(path);
             search.CalcSim(query);
         }
+        else if(command.equals("-m")){
+            String query = args[3];
+            Midterm  midterm = new Midterm(path);
+            midterm.showSnippet(query);
+        }
     }
 }
